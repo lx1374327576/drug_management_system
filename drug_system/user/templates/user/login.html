@@ -1,0 +1,6 @@
+<form action="{% url 'user:login' %}" method="post">
+    {% csrf_token %}
+    用户名: <input type="text" name="user_name"><br>
+    密码: <input type="text" name="password"><br>
+    <input type="submit" value="Login">
+</form>

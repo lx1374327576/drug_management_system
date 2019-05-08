@@ -29,3 +29,21 @@ def query(request, id, query_name):
         raise Http404('user is not exist!')
     except Exception as e:
         return HttpResponse('the user is not available!')
+
+
+def login(request):
+    try:
+        user_name = request.POST['user_name']
+        password = request.POST['password']
+        q = User.objects.get(user_name=user_name)
+        if q.password != password:
+            return HttpResponse('Password is Wrong!')
+        else:
+            user_list = list(User.objects.all())
+            context = {
+                'user_list': user_list,
+            }
+            return render(request, 'user/index.html', context)
+    except Exception as e:
+        print(e)
+        return HttpResponse('Something went wrong')
