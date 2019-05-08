@@ -1,13 +1,7 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'user/style.css' %}">
-
-{% if user_list %}
-    <ul>
-        <p>检查用户是否为管理员</p>
-        {% for user in user_list %}
-            <li><a href="{% url 'user:query' user.id 'is_admin' %}">{{ user.user_name }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No user_list is available.</p>
-{% endif %}
+<body>
+    <a href="{% url 'user:demand' %}">需求</a><br>
+    <a href="{% url 'user:checkout' %}">出库</a><br>
+    <a href="{% url 'user:lack' %}">缺货</a><br>
+    <a href="{% url 'user:purchase' %}">采购</a><br>
+    <a href="{% url 'user:storage' %}">入库</a><br>
+</body>

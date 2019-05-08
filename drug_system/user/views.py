@@ -10,7 +10,7 @@ def index(request):
     context = {
         'user_list': user_list,
     }
-    return render(request, 'user/index.html', context)
+    return render(request, 'user/test.html', context)
 
 
 def query(request, id, query_name):
@@ -39,11 +39,35 @@ def login(request):
         if q.password != password:
             return HttpResponse('Password is Wrong!')
         else:
-            user_list = list(User.objects.all())
             context = {
-                'user_list': user_list,
+                'user': q,
             }
             return render(request, 'user/index.html', context)
     except Exception as e:
         print(e)
         return HttpResponse('Something went wrong')
+
+
+def demand(request):
+    context = {}
+    return render(request, 'demand/index.html', context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, 'checkout/index.html', context)
+
+
+def lack(request):
+    context = {}
+    return render(request, 'lack/index.html', context)
+
+
+def purchase(request):
+    context = {}
+    return render(request, 'purchase/index.html', context)
+
+
+def storage(request):
+    context = {}
+    return render(request, 'storage/index.html', context)
