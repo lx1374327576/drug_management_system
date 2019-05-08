@@ -1,0 +1,9 @@
+body {
+    background: white url("images/test.jpeg") no-repeat;
+}
+p {
+    color: red;
+}
+li a {
+    color: red;
+}

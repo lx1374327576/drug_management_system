@@ -1,9 +1,16 @@
 from django.http import HttpResponse
+from django.http import Http404
 from .models import User
+from django.template import loader
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    user_list = list(User.objects.all())
+    context = {
+        'user_list': user_list,
+    }
+    return render(request, 'user/index.html', context)
 
 
 def query(request, id, query_name):
@@ -18,5 +25,7 @@ def query(request, id, query_name):
             return HttpResponse('id %d is %s' % (q.id, q.user_name))
         else:
             return HttpResponse('query_name is incorrect!')
+    except User.DoesNotExist:
+        raise Http404('user is not exist!')
     except Exception as e:
         return HttpResponse('the user is not available!')
