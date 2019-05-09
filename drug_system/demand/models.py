@@ -41,7 +41,7 @@ class Demand(models.Model):
     demander = models.ForeignKey(Demander, on_delete=models.CASCADE)
     create_time = models.DateTimeField('create_time', default=timezone.now)
     create_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    status = models.IntegerField('status', default=0)  # 0 未处理 1 审核通过 2 单子完成 -1 审核未通过
+    status = models.IntegerField('status', default=0)  # 0 未处理 1 审核通过 2 单子完成 3 审核未通过
     check_time = models.DateTimeField('check_time', default=timezone.now)
 
 

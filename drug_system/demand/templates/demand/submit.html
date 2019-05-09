@@ -1,7 +1,7 @@
 <body>
     <h1> 需求单 </h1>
     <p> 单号 {{demand_form.id}} </p>
-    <p> 需求单发起人 {{demand_form.create_user.name}} </p>
+    <p> 需求单发起人 {{demand_form.create_user.user_name}} </p>
     <p> 需求发起时间 {{demand_form.create_time}} </p>
     <table>
         <tr>
@@ -19,5 +19,5 @@
             </tr>
         {% endfor %}
     </table>
-    <a href="">确认</a>
+    <a href="{% url 'demand:query' %}">确认</a>
 </body>
