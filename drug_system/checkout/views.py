@@ -54,7 +54,7 @@ def submit(request):
         "checkout_form": checkout_form,
         "detail_list": detail_list,
     }
-    return render(request, 'Checkout/submit.html', context)
+    return render(request, 'checkout/submit.html', context)
 
 
 def query(request):

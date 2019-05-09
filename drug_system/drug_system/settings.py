@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'demand.apps.DemandConfig',
     'checkout.apps.CheckoutConfig',
-    # 'lack.apps.LackConfig',
+    'lack.apps.LackConfig',
     # 'purchase.apps.Purchase',
     # 'storage.apps.Storage',
 ]

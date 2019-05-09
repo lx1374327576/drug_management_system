@@ -1,0 +1,20 @@
+<body>
+    <p> 缺货单一览 </p>
+    <table>
+        <tr>
+            <td> 序号 </td>
+            <td> 明细 </td>
+            <td> 发起时间 </td>
+            <td> 发起人 </td>
+        </tr>
+        {% for lack in lack_list %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td><a href="{% url 'lack:query_detail' lack.id %}">明细</a></td>
+                <td> {{lack.create_time}} </td>
+                <td> {{lack.create_user.user_name}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'user:index' %}">回到首页</a>
+</body>
