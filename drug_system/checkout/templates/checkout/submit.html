@@ -1,0 +1,23 @@
+<body>
+    <h1> 出库单 </h1>
+    <p> 单号 {{checkout_form.id}} </p>
+    <p> 需求单发起人 {{checkout_form.create_user.user_name}} </p>
+    <p> 需求发起时间 {{checkout_form.create_time}} </p>
+    <table>
+        <tr>
+            <td> 序号 </td>
+            <td> 药品名称 </td>
+            <td> 药品数量 </td>
+            <td> 价格 </td>
+        </tr>
+        {% for detail in detail_list %}
+            <tr>
+                <td> {{forloop.counter}} </td>
+                <td> {{detail.medicine.name}} </td>
+                <td> {{detail.num}} </td>
+                <td> {{detail.price}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'checkout:query' %}">确认</a>
+</body>

@@ -1,0 +1,29 @@
+<body>
+    <h1> 当前需求单明细 </h1>
+    <form action="{% url 'checkout:submit' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td> 序号 </td>
+                <td> 药品名称 </td>
+                <td> 药品数量 </td>
+                <td> 价格 </td>
+                <td> 所属需求单号 </td>
+                <td> 是否选择 </td>
+            {% for detail in detail_list %}
+                <tr>
+                    <td> {{forloop.counter}} </td>
+                    <td> {{detail.medicine.name}} </td>
+                    <td> {{detail.num}} </td>
+                    <td> {{detail.price}} </td>
+                    <td> {{detail.form_id}} </td>
+                    <td>
+                        <input name="{{detail.id}}" type="checkbox" value="checked" />
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="提交">
+    </form>
+    <a href="{% url 'user:index' %}">回到首页</a>
+</body>

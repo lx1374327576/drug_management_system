@@ -20,7 +20,7 @@ class Detail(models.Model):
     medicine = models.ForeignKey(Medicine, blank=False, on_delete=models.CASCADE)
     num = models.FloatField('num')
     price = models.FloatField('price')
-    status = models.IntegerField('status', default=0)  # 0 未处理 1 处理中 2 流程结束
+    status = models.IntegerField('status', default=0)  # 0 未处理 1 处理中 2 已完成
     form_type = models.IntegerField('form_type')  # 1 需求单 2 出库单 3 缺货单 4 采购单 5 入库单
     form_id = models.IntegerField('form_id')
 

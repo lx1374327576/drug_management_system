@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'demand.apps.DemandConfig',
+    'checkout.apps.CheckoutConfig',
+    # 'lack.apps.LackConfig',
+    # 'purchase.apps.Purchase',
+    # 'storage.apps.Storage',
 ]
 
 MIDDLEWARE = [
