@@ -2,6 +2,6 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def demand(request):
+def lack(request):
     context = {}
-    return render(request, 'demand/index.html', context)
+    return render(request, 'lack/index.html', context)

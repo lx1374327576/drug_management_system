@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.http import Http404
 from .models import User
-from django.template import loader
 from django.shortcuts import render
 
 
@@ -48,26 +47,4 @@ def login(request):
         return HttpResponse('Something went wrong')
 
 
-def demand(request):
-    context = {}
-    return render(request, 'demand/index.html', context)
 
-
-def checkout(request):
-    context = {}
-    return render(request, 'checkout/index.html', context)
-
-
-def lack(request):
-    context = {}
-    return render(request, 'lack/index.html', context)
-
-
-def purchase(request):
-    context = {}
-    return render(request, 'purchase/index.html', context)
-
-
-def storage(request):
-    context = {}
-    return render(request, 'storage/index.html', context)

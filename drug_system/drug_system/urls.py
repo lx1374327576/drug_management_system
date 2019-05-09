@@ -21,4 +21,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
+    path('demand/', include('demand.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('lack/', include('lack.urls')),
+    path('purchase/', include('purchase.urls')),
+    path('storage/', include('storage.urls')),
 ]
