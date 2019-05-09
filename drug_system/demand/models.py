@@ -58,5 +58,3 @@ class Demander_Demand(models.Model):
     num = models.FloatField('num')
     medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.id

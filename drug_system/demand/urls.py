@@ -6,4 +6,5 @@ app_name = 'demand'
 
 urlpatterns = [
     path('demand/', views.demand, name='demand'),
+    path('submit/', views.submit, name='submit'),
 ]
