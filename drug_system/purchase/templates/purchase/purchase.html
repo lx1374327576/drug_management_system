@@ -1,22 +1,26 @@
 <body>
     <h1> 当前需求 </h1>
-    <form action="{% url 'demand:submit' %}" method="post">
+    <form action="{% url 'purchase:submit' %}" method="post">
         {% csrf_token %}
+        <p> 选择供应商 </p>
+        <select name="provider_id">
+            {% for provider in provider_list %}
+                <option value="{{provider.id}}">{{provider.name}}</option>
+            {% endfor %}
+        </select>
         <table>
             <tr>
                 <td> 序号 </td>
-                <td> 需求方名称 </td>
                 <td> 药品名称 </td>
                 <td> 药品数量 </td>
                 <td> 是否选择 </td>
-            {% for demand in demand_list %}
+            {% for detail in detail_list %}
                 <tr>
-                    <td> {{demand.id}} </td>
-                    <td> {{demand.demander.name}} </td>
-                    <td> {{demand.medicine.name}} </td>
-                    <td> {{demand.num}} </td>
+                    <td> {{forloop.counter}} </td>
+                    <td> {{detail.medicine.name}} </td>
+                    <td> {{detail.num}} </td>
                     <td>
-                        <input name="{{demand.id}}" type="checkbox" value="checked" />
+                        <input name="{{detail.id}}" type="checkbox" value="checked" />
                     </td>
                 </tr>
             {% endfor %}

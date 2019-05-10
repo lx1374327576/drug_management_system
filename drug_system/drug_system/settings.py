@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'demand.apps.DemandConfig',
     'checkout.apps.CheckoutConfig',
     'lack.apps.LackConfig',
-    # 'purchase.apps.Purchase',
-    # 'storage.apps.Storage',
+    'purchase.apps.PurchaseConfig',
+    # 'storage.apps.StorageConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,44 +1,46 @@
 <body>
-    <p> 需求单一览 </p>
+    <p> 采购单单一览 </p>
     <table>
         <tr>
             <td> 序号 </td>
             <td> 明细 </td>
+            <td> 供应商 </td>
             <td> 发起时间 </td>
             <td> 发起人 </td>
             <td> 审核状态 </td>
             <td> 按钮 </td>
         </tr>
-        {% for demand in demand_list %}
+        {% for purchase in purchase_list %}
             <tr>
                 <td> {{forloop.counter}} </td>
-                <td><a href="{% url 'demand:query_detail' demand.id %}">明细</a></td>
-                <td> {{demand.create_time}} </td>
-                <td> {{demand.create_user.user_name}} </td>
-                {% if demand.status == 0 %}
+                <td><a href="{% url 'purchase:query_detail' purchase.id %}">明细</a></td>
+                <td> {{purchase.provider.name}} </td>
+                <td> {{purchase.create_time}} </td>
+                <td> {{purchase.create_user.user_name}} </td>
+                {% if purchase.status == 0 %}
                     <td>
                         {{status_dict.0}}
                     </td>
                 {% endif %}
-                {% if demand.status == 1 %}
+                {% if purchase.status == 1 %}
                     <td>
                         {{status_dict.1}}
                     </td>
                 {% endif %}
-                {% if demand.status == 2 %}
+                {% if purchase.status == 2 %}
                     <td>
                         {{status_dict.2}}
                     </td>
                 {% endif %}
-                {% if demand.status == 3 %}
+                {% if purchase.status == 3 %}
                     <td>
                         {{status_dict.3}}
                     </td>
                 {% endif %}
-                {% if demand.status == 0 %}
+                {% if purchase.status == 0 %}
                     <td>
-                        <a type="button" href="{% url 'demand:accept' demand.id %}">接受</a>
-                        <a type="button" href="{% url 'demand:deny' demand.id %}">拒绝</a>
+                        <a type="button" href="{% url 'purchase:accept' purchase.id %}">接受</a>
+                        <a type="button" href="{% url 'purchase:deny' purchase.id %}">拒绝</a>
                     </td>
                 {% endif %}
             </tr>
