@@ -1,0 +1,22 @@
+<body>
+    <p> 生成缺货单(战略储备) </p>
+    <form action="{% url 'lack:stack_submit' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td> 序号 </td>
+                <td> 药名 </td>
+                <td> 数量 </td>
+            </tr>
+            {% for medicine in medicine_list %}
+                <tr>
+                    <td> {{forloop.counter}} </td>
+                    <td> {{medicine.name}} </td>
+                    <td><input type="text" name="{{medicine.id}}" /></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="提交">
+    </form>
+    <a href="{% url 'user:index' %}">回到首页</a>
+</body>

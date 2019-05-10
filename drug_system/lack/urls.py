@@ -9,5 +9,7 @@ urlpatterns = [
     path('make/', views.make, name='make'),
     path('submit/', views.submit, name='submit'),
     path('query/', views.query, name='query'),
+    path('stack/', views.stack, name='stack'),
     path('query_detail/<int:lack_id>', views.query_detail, name='query_detail'),
+    path('stack_submit/', views.stack_submit, name='stack_submit'),
 ]

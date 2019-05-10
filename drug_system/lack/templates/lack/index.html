@@ -1,5 +1,6 @@
 <body>
-    <a href="{% url 'lack:make' %}">生成缺货单</a><br>
+    <a href="{% url 'lack:make' %}">生成缺货单(从当前缺口)</a><br>
+    <a href="{% url 'lack:stack' %}">生成缺货单(战略储备)</a><br>
     <a href="{% url 'lack:query' %}">查询缺货单</a><br>
     <a href="{% url 'user:index' %}">回到首页</a>
 </body>

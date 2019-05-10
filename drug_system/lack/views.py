@@ -2,6 +2,9 @@ from django.shortcuts import render
 from checkout.models import Checkout
 from demand.models import Detail, Medicine
 from user.models import User
+from django.http import Http404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Lack
 
 
@@ -56,9 +59,9 @@ def submit(request):
         if medicine_list[i] != 0:
             detail = Detail(price=medicine_list[i]*i, num=medicine_list[i], medicine=medicines[i-1],
                             form_type=3, form_id=lack_form.id)
-            medicines[i-1].total_num += medicine_list[i]
-            print(medicines[i-1].id, medicine_list[i])
-            medicines[i-1].save()
+            medicine = Medicine.objects.get(id=medicines[i-1].id)
+            medicine.total_num = medicine.total_num + medicine_list[i]
+            medicine.save()
             detail.save()
             de_list = Detail.objects.all()
             length = de_list.count()
@@ -87,3 +90,39 @@ def query_detail(request, lack_id):
         'lack_form': lack_form,
     }
     return render(request, 'lack/submit.html', context)
+
+
+def stack(request):
+    medicine_list = Medicine.objects.all()
+    context = {
+        'medicine_list': medicine_list,
+    }
+    return render(request, 'lack/stack.html', context)
+
+
+def stack_submit(request):
+    medicine_map = request.POST
+    lx = User.objects.get(id=1)
+    lack_form = Lack(create_user=lx)
+    lack_form.save()
+    lack_form_list = Lack.objects.all()
+    length = lack_form_list.count()
+    lack_form = lack_form_list[length - 1]
+    for key in medicine_map:
+        test = -1
+        try:
+            test = int(medicine_map[key])
+        except Exception:
+            print('key:', key, 'map[key]:', medicine_map[key])
+        if test <= 0:
+            continue
+        else:
+            medicine_id = int(key)
+            medicine_num = test
+            medicine = Medicine.objects.get(id=medicine_id)
+            medicine.total_num = medicine.total_num + medicine_num
+            medicine.save()
+            detail = Detail(price=medicine_num*medicine_id, num=medicine_num, medicine=medicine,
+                            form_type=3, form_id=lack_form.id)
+            detail.save()
+    return HttpResponseRedirect(reverse('lack:query'))
