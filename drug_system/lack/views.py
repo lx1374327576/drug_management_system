@@ -56,6 +56,9 @@ def submit(request):
         if medicine_list[i] != 0:
             detail = Detail(price=medicine_list[i]*i, num=medicine_list[i], medicine=medicines[i-1],
                             form_type=3, form_id=lack_form.id)
+            medicines[i-1].total_num += medicine_list[i]
+            print(medicines[i-1].id, medicine_list[i])
+            medicines[i-1].save()
             detail.save()
             de_list = Detail.objects.all()
             length = de_list.count()

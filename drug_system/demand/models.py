@@ -7,6 +7,8 @@ class Medicine(models.Model):
 
     id = models.IntegerField('id', primary_key=True)
     name = models.CharField('name', blank=False, max_length=100)
+    total_num = models.FloatField('total_num', default=0)
+    now_num = models.FloatField('now_num', default=0)
 
     def __str__(self):
         return self.name
