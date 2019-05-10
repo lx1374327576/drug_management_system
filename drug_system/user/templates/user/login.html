@@ -47,14 +47,27 @@
             padding: 10px;
         }
 
-        /* 左右两侧宽度 */
-        .column.side {
+        /* 左侧宽度 */
+        .column.left {
             width: 25%;
+            background-image:url("/static/1.jpg");
+            height: 505px;
+        }
+
+        /* 右侧宽度 */
+        .column.right {
+            width: 25%;
+            background-image:url("/static/1.jpg");
+            height: 505px;
         }
 
         /* 中间区域宽度 */
         .column.middle {
             width: 50%;
+            margin:0;
+		    padding:0;
+		    background:url ("/static/login_2.jpg") no-repeat;
+		    background-size:100%;
         }
 
         /* 列后面清除浮动 */
@@ -71,6 +84,22 @@
             }
         }
 
+        <!--form{-->
+            <!--position:absolute;-->
+            <!--left:50%;-->
+            <!--top:50%;-->
+            <!--margin-left:-300px;-->
+            <!--margin-top:-220px;-->
+            <!--width:480px;-->
+            <!--height:380px;-->
+            <!--background:url("/static/login_1.png") no-repeat;-->
+            <!--border-radius:25px;-->
+            <!--color:#fff;-->
+            <!--text-align:center;-->
+            <!--padding:65px;-->
+            <!--/*box-shadow: 0px 0px 15px #0005;*/-->
+        <!--}-->
+
         /* 底部样式 */
         .footer {
             background-color: #f1f1f1;
@@ -85,15 +114,15 @@
         </div>
 
         <div class="topnav">
-            <a href="www.baidu.com">百度</a>
+            <a href="https://www.baidu.com">baidu</a>
             <a href="https://github.com/">github</a>
             <a href="https://leetcode.com/">leetcode</a>
             <a href="https://www.processon.com/">processon</a>
             <a href="https://docs.djangoproject.com/">django</a>
         </div>
         <div class="row">
-            <div class="column side">
-                <img src="/static/1.jpg" style="max-width:100%;height:auto;"/>
+            <div class="column left">
+                <!--<img src="/static/1.jpg" style="max-width:100%;height:auto;"/>-->
             </div>
             <div class="column middle">
                 <form action="{% url 'user:login' %}" method="post">
@@ -104,8 +133,8 @@
                 </form>
             </div>
 
-            <div class="column side">
-                <img src="/static/2.jpg" style="max-width:100%;height:auto;"/>
+            <div class="column right">
+                <!--<img src="/static/2.jpg" style="max-width:100%;height:auto;"/>-->
             </div>
         </div>
         <div class="footer">
