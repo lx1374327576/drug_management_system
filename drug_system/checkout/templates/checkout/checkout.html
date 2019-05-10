@@ -9,6 +9,7 @@
                 <td> 药品数量 </td>
                 <td> 价格 </td>
                 <td> 所属出库计划单号 </td>
+                <td> 出库仓库 </td>
                 <td> 是否选择 </td>
             {% for detail in detail_list %}
                 <tr>
@@ -17,6 +18,7 @@
                     <td> {{detail.num}} </td>
                     <td> {{detail.price}} </td>
                     <td> {{detail.form_id}} </td>
+                    <td> 1号仓库 </td>
                     <td>
                         <input name="{{detail.id}}" type="checkbox" value="checked" />
                     </td>

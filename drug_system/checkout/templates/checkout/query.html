@@ -6,6 +6,7 @@
             <td> 明细 </td>
             <td> 发起时间 </td>
             <td> 发起人 </td>
+            <td> 出库仓库 </td>
             <td> 出库状态 </td>
             <td> 按钮 </td>
         </tr>
@@ -15,6 +16,7 @@
                 <td><a href="{% url 'checkout:query_detail' checkout.id %}">明细</a></td>
                 <td> {{checkout.create_time}} </td>
                 <td> {{checkout.create_user.user_name}} </td>
+                <td> 1号仓库 </td>
                 {% if checkout.status == 0 %}
                     <td>
                         {{status_dict.0}}
