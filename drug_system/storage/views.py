@@ -87,6 +87,36 @@ def query(request):
     return render(request, 'storage/query.html', context)
 
 
+def query(request):
+    return HttpResponseRedirect(reverse('storage:query')+'1')
+
+
+def query_page(request, page_id):
+    storage_list = Storage.objects.all().order_by('status', '-id')
+    list_length = storage_list.count()
+    if page_id*10 >= list_length+10:
+        return HttpResponseRedirect(reverse('storage:query') + str((list_length-1) // 10+1))
+    storage_list = storage_list[(page_id-1)*10:min(page_id*10, list_length)]
+    status_dict = {
+        1: '未入库',
+        2: '已入库',
+        0: '待审核',
+        3: '审核未通过',
+    }
+    context = {
+        'storage_list': storage_list,
+        'status_dict': status_dict,
+        'page_id': page_id,
+        'page_id_minus': page_id-1,
+        'page_id_plus': page_id+1,
+        'page_id_minus2': page_id-2,
+        'page_id_minus3': page_id-3,
+        'page_id_plus2': page_id+2,
+        'page_id_plus3': page_id+3,
+    }
+    return render(request, 'storage/query.html', context)
+
+
 def query_detail(request, storage_id):
     detail_list = Detail.objects.filter(form_type=5).filter(form_id=storage_id)
     storage_form = Storage.objects.get(id=storage_id)

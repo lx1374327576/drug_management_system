@@ -14,9 +14,9 @@
 
         /* 头部样式 */
         .header {
-        background-color: #f1f1f1;
-        padding: 20px;
-        text-align: center;
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
         }
 
         a {
@@ -181,17 +181,17 @@
             </div>
             <div class="column middle">
                 <div class="submit-div">
-                    <h1> 出库计划单一览 </h1>
+                    <h2> 出库计划单一览 </h2>
                 </div>
                 <table>
                     <tr>
-                        <td> 序号 </td>
-                        <td> 计划单编号 </td>
-                        <td> 发起时间 </td>
-                        <td> 发起人 </td>
-                        <td> 详情 </td>
-                        <td> 审核状态 </td>
-                        <td> 按钮 </td>
+                        <td> <strong>序号<s/trong> </td>
+                        <td> <strong>计划单编号</strong> </td>
+                        <td> <strong>发起时间</strong> </td>
+                        <td> <strong>发起人</strong> </td>
+                        <td> <strong>详情</strong> </td>
+                        <td> <strong>审核状态</strong> </td>
+                        <td> <strong>按钮</strong> </td>
                     </tr>
                     {% for demand in demand_list %}
                         <tr>
@@ -233,45 +233,53 @@
                 </table>
                 <br>
                 <div class="submit-div">
-                    <!--<ul class="pagination">-->
-                        <!--{% if page_id <= 4 %}-->
-                            <!--{% if page_id == 1 %}-->
-                                <!--<li><a href="{% url 'demand:query' %}">1</a></li>-->
-                                <!--<li><a class='active' href="{% url 'demand:query' %}">1</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' page_id_plus %}">2</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' page_id_plus2 %}">3</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' page_id_plus3 %}">4</a></li>-->
-                            <!--{% endif %}-->
-                            <!--{% if page_id == 2 %}-->
-                                <!--<li><a href="{% url 'demand:query' page_id_minus %}">«</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 1 %}">1</a></li>-->
-                                <!--<li><a class='active' href="{% url 'demand:query' 2 %}">2</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 3 %}">3</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 4 %}">4</a></li>-->
-                            <!--{% endif %}-->
-                            <!--{% if page_id == 3 %}-->
-                                <!--<li><a href="{% url 'demand:query' page_id_minus %}">«</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 1 %}">1</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 2 %}">2</a></li>-->
-                                <!--<li><a class='active' href="{% url 'demand:query' 3 %}">3</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 4 %}">4</a></li>-->
-                            <!--{% endif %}-->
-                            <!--{% if page_id == 4 %}-->
-                                <!--<li><a href="{% url 'demand:query' page_id_minus %}">«</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 1 %}">1</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 2 %}">2</a></li>-->
-                                <!--<li><a href="{% url 'demand:query' 3 %}">3</a></li>-->
-                                <!--<li><a class='active' href="{% url 'demand:query' 4 %}">4</a></li>-->
-                            <!--{% endif %}-->
-                            <!--<li><a href="{% url 'demand:query' 5 %}">5</a></li>-->
-                            <!--<li><a href="{% url 'demand:query' 6 %}">6</a></li>-->
-                            <!--<li><a href="{% url 'demand:query' 7 %}">7</a></li>-->
-                            <!--<li><a href="{% url 'demand:query' page_id_plus %}">»</a></li>-->
-                        <!--{% endif %}-->
-                        <!--{% if page_id > 4 %}-->
-
-                        <!--{% endif %}-->
-                    <!--</ul>-->
+                    <ul class="pagination">
+                        {% if page_id < 4 %}
+                            {% if page_id == 1 %}
+                                <li><a href="{% url 'demand:query_page' 1 %}">«</a></li>
+                                <li><a class='active' href="{% url 'demand:query_page' 1 %}">1</a></li>
+                                <li><a href="{% url 'demand:query_page' 2 %}">2</a></li>
+                                <li><a href="{% url 'demand:query_page' 3 %}">3</a></li>
+                                <li><a href="{% url 'demand:query_page' 4 %}">4</a></li>
+                            {% endif %}
+                            {% if page_id == 2 %}
+                                <li><a href="{% url 'demand:query_page' page_id_minus %}">«</a></li>
+                                <li><a href="{% url 'demand:query_page' 1 %}">1</a></li>
+                                <li><a class='active' href="{% url 'demand:query_page' 2 %}">2</a></li>
+                                <li><a href="{% url 'demand:query_page' 3 %}">3</a></li>
+                                <li><a href="{% url 'demand:query_page' 4 %}">4</a></li>
+                            {% endif %}
+                            {% if page_id == 3 %}
+                                <li><a href="{% url 'demand:query_page' page_id_minus %}">«</a></li>
+                                <li><a href="{% url 'demand:query_page' 1 %}">1</a></li>
+                                <li><a href="{% url 'demand:query_page' 2 %}">2</a></li>
+                                <li><a class='active' href="{% url 'demand:query_page' 3 %}">3</a></li>
+                                <li><a href="{% url 'demand:query_page' 4 %}">4</a></li>
+                            {% endif %}
+                            {% if page_id == 4 %}
+                                <li><a href="{% url 'demand:query_page' page_id_minus %}">«</a></li>
+                                <li><a href="{% url 'demand:query_page' 1 %}">1</a></li>
+                                <li><a href="{% url 'demand:query_page' 2 %}">2</a></li>
+                                <li><a href="{% url 'demand:query_page' 3 %}">3</a></li>
+                                <li><a class='active' href="{% url 'demand:query_page' 4 %}">4</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'demand:query_page' 5 %}">5</a></li>
+                            <li><a href="{% url 'demand:query_page' 6 %}">6</a></li>
+                            <li><a href="{% url 'demand:query_page' 7 %}">7</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_plus %}">»</a></li>
+                        {% endif %}
+                        {% if page_id >= 4 %}
+                            <li><a href="{% url 'demand:query_page' page_id_minus %}">«</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_minus3 %}">{{page_id_minus3}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_minus2 %}">{{page_id_minus2}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_minus %}">{{page_id_minus}}</a></li>
+                            <li><a class="active" href="{% url 'demand:query_page' page_id %}">{{page_id}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_plus %}">{{page_id_plus}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_plus2 %}">{{page_id_plus2}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_plus3 %}">{{page_id_plus3}}</a></li>
+                            <li><a href="{% url 'demand:query_page' page_id_plus %}">»</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
 

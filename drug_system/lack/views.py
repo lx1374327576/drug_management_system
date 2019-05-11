@@ -75,9 +75,24 @@ def submit(request):
 
 
 def query(request):
-    lack_list = Lack.objects.all()
+    return HttpResponseRedirect(reverse('lack:query') + '1')
+
+
+def query_page(request, page_id):
+    lack_list = Lack.objects.all().order_by('-id')
+    list_length = lack_list.count()
+    if page_id * 10 >= list_length + 10:
+        return HttpResponseRedirect(reverse('lack:query') + str((list_length - 1) // 10 + 1))
+    lack_list = lack_list[(page_id - 1) * 10:min(page_id * 10, list_length)]
     context = {
         'lack_list': lack_list,
+        'page_id': page_id,
+        'page_id_minus': page_id - 1,
+        'page_id_plus': page_id + 1,
+        'page_id_minus2': page_id - 2,
+        'page_id_minus3': page_id - 3,
+        'page_id_plus2': page_id + 2,
+        'page_id_plus3': page_id + 3,
     }
     return render(request, 'lack/query.html', context)
 

@@ -10,6 +10,7 @@ urlpatterns = [
     path('make/', views.make, name='make'),
     path('query/', views.query, name='query'),
     path('query_detail/<int:storage_id>/', views.query_detail, name='query_detail'),
+    path('query/<int:page_id>', views.query_page, name='query_page'),
     path('accept/<int:storage_id>/', views.accept, name='accept'),
     path('deny/<int:storage_id>/', views.deny, name='deny'),
     path('move/<int:storage_id>', views.move, name='move'),

@@ -58,7 +58,15 @@ def submit(request):
 
 
 def query(request):
-    checkout_list = Checkout.objects.all()
+    return HttpResponseRedirect(reverse('checkout:query')+'1')
+
+
+def query_page(request, page_id):
+    checkout_list = Checkout.objects.all().order_by('status', '-id')
+    list_length = checkout_list.count()
+    if page_id * 10 >= list_length + 10:
+        return HttpResponseRedirect(reverse('checkout:query') + str((list_length - 1) // 10 + 1))
+    checkout_list = checkout_list[(page_id - 1) * 10:min(page_id * 10, list_length)]
     status_dict = {
         1: '已出库',
         0: '未出库',
@@ -66,6 +74,13 @@ def query(request):
     context = {
         'checkout_list': checkout_list,
         'status_dict': status_dict,
+        'page_id': page_id,
+        'page_id_minus': page_id - 1,
+        'page_id_plus': page_id + 1,
+        'page_id_minus2': page_id - 2,
+        'page_id_minus3': page_id - 3,
+        'page_id_plus2': page_id + 2,
+        'page_id_plus3': page_id + 3,
     }
     return render(request, 'checkout/query.html', context)
 
