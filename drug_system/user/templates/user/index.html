@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -22,7 +21,7 @@
 
         /* 导航条 */
         .topnav {
-               overflow: hidden;
+            overflow: hidden;
             background-color: #333;
         }
 
@@ -47,14 +46,23 @@
             padding: 10px;
         }
 
-        /* 左右两侧宽度 */
-        .column.side {
-            width: 25%;
+         /* 左侧宽度 */
+        .column.left {
+            width: 20%;
+            background-image:url("/static/2.jpeg");
+            height: 1000px;
+        }
+
+        /* 右侧宽度 */
+        .column.right {
+            width: 20%;
+            background-image:url("/static/2.jpeg");
+            height: 1000px;
         }
 
         /* 中间区域宽度 */
         .column.middle {
-            width: 50%;
+            width: 60%;
         }
 
         /* 列后面清除浮动 */
@@ -92,19 +100,13 @@
             <a href="{% url 'storage:storage' %}">入库</a>
         </div>
         <div class="row">
-            <div class="column side">
-                <img src="/static/1.jpg" style="max-width:100%;height:auto;"/>
+            <div class="column left">
             </div>
             <div class="column middle">
-                <p>什么是物流信息系统？</p>
-                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp物流信息系统是指由人员、设备和程序组成的、为物流管理者执行计划、实施、控制等职能提供信息的交互系统，它与物流作业系统一样都是物流系统的子系统。
-所谓物流信息系统，实际上是物流管理软件和信息网络结合的产物，小到一个具体的物流管理软件，大到利用覆盖全球的互联网将所有相关的合作伙伴、供应链成员连接在一起提供物流信息服务的系统，都叫做物流信息系统。
-对一个企业而言，物流信息系统不是独立存在的，而是企业信息系统的一部分，或者说是其中的子系统，即使对一个专门从事物流服务的企业也是如此。例如，一个企业的ERP系统，物流管理信息系统就是其中一个子系统。
-物流信息系统作为企业信息系统中的一类，可以理解为对通过与物流相关信息的加工处理来达到对物流、资金流的有限控制和管理，并为企业提供信息分析和决策支持的人机系统。</p>
+                <img src="/static/index_1.jpg" style="max-width:100%;height:auto;"/>
             </div>
 
-            <div class="column side">
-                <img src="/static/2.jpg" style="max-width:100%;height:auto;"/>
+            <div class="column right">
             </div>
         </div>
         <div class="footer">
