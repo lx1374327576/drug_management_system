@@ -52,7 +52,15 @@ def make(request):
 
 
 def query(request):
-    demand_list = Demand.objects.all()
+    return HttpResponseRedirect(reverse('demand:query')+'1')
+
+
+def query_page(request, page_id):
+    demand_list = Demand.objects.all().order_by('status', '-id')
+    list_length = demand_list.count()
+    if page_id*10 >= list_length+10:
+        return HttpResponseRedirect(reverse('demand:query') + str((list_length-1) // 10+1))
+    demand_list = demand_list[(page_id-1)*10:min(page_id*10, list_length)]
     status_dict = {
         1: '审核通过',
         2: '已完成',
@@ -62,6 +70,13 @@ def query(request):
     context = {
         'demand_list': demand_list,
         'status_dict': status_dict,
+        'page_id': page_id,
+        'page_id_minus': page_id-1,
+        'page_id_plus': page_id+1,
+        'page_id_minus2': page_id-2,
+        'page_id_minus3': page_id-3,
+        'page_id_plus2': page_id+2,
+        'page_id_plus3': page_id+3,
     }
     return render(request, 'demand/query.html', context)
 
