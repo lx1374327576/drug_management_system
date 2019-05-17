@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from .models import User
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 
 def test(request):
@@ -52,4 +53,6 @@ def login(request):
         return HttpResponse('Something went wrong')
 
 
+def logout(request):
+    return redirect("http://127.0.0.1:8000/")
 
