@@ -20,6 +20,7 @@ class Detail(models.Model):
     father_id = models.IntegerField('father_id', default=0)
     father_detail_id = models.IntegerField('father_detail_id', default=0)
     medicine = models.ForeignKey(Medicine, blank=False, on_delete=models.CASCADE)
+    create_time = models.DateTimeField('create_time', default=timezone.now)
     num = models.FloatField('num')
     price = models.FloatField('price')
     status = models.IntegerField('status', default=0)  # 0 未处理 1 处理中 2 已完成

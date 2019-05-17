@@ -21,8 +21,11 @@ def make(request):
         checkout = Checkout.objects.get(id=detail.form_id)
         if checkout.status == 1:
             detail_list.append(detail)
+    lack_list = Lack.objects.all()
+    lack_num = lack_list.count() + 1
     context = {
         "detail_list": detail_list,
+        'lack_num': lack_num,
     }
     return render(request, 'lack/lack.html', context)
 

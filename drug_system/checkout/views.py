@@ -20,8 +20,11 @@ def make(request):
         demand = Demand.objects.get(id=detail.form_id)
         if demand.status == 1:
             detail_list.append(detail)
+    checkout_list = Checkout.objects.all()
+    checkout_num = checkout_list.count() + 1
     context = {
         "detail_list": detail_list,
+        "checkout_num": checkout_num,
     }
     return render(request, 'checkout/checkout.html', context)
 

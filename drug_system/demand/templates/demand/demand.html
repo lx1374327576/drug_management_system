@@ -125,7 +125,7 @@
         </div>
 
         <div class="topnav">
-            <a href="{% url 'demand:demand' %}">出库计划</a>
+            <a href="{% url 'demand:demand' %}">调拨</a>
             <a href="{% url 'checkout:checkout' %}">出库</a>
             <a href="{% url 'lack:lack' %}">缺货</a>
             <a href="{% url 'purchase:purchase' %}">采购</a>
@@ -137,14 +137,18 @@
             </div>
             <div class="column middle">
                 <div class="submit-div">
-                    <h2> 生成出库计划单 </h2>
+                    <h2> 生成调拨单 </h2>
                 </div>
                 <form action="{% url 'demand:submit' %}" method="post">
                     {% csrf_token %}
                     <table>
                         <tr>
+                            <td><strong>当前调拨单号</strong></td>
+                            <td> demand-{{demand_num}} </td>
+                        </tr>
+                        <tr>
                             <td> <strong>序号</strong> </td>
-                            <td> <strong>出库计划方名称</strong> </td>
+                            <td> <strong>调拨需求方名称</strong> </td>
                             <td> <strong>药品名称</strong> </td>
                             <td> <strong>药品数量</strong> </td>
                             <td> <strong>是否选择</strong> </td>

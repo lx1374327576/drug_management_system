@@ -125,7 +125,7 @@
         </div>
 
         <div class="topnav">
-            <a href="{% url 'demand:demand' %}">出库计划</a>
+            <a href="{% url 'demand:demand' %}">调拨</a>
             <a href="{% url 'checkout:checkout' %}">出库</a>
             <a href="{% url 'lack:lack' %}">缺货</a>
             <a href="{% url 'purchase:purchase' %}">采购</a>
@@ -142,6 +142,10 @@
                 <form action="{% url 'lack:submit' %}" method="post">
                     {% csrf_token %}
                     <table>
+                        <tr>
+                            <td><strong>当前缺货单号</strong></td>
+                            <td> lack-{{lack_num}} </td>
+                        </tr>
                         <tr>
                             <td> <strong>序号</strong> </td>
                             <td> <strong>药品名称</strong> </td>

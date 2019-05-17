@@ -66,8 +66,11 @@ def make(request):
         purchase = Purchase.objects.get(id=detail.form_id)
         if purchase.status == 1:
             detail_list.append(detail)
+    storage_list = Storage.objects.all()
+    storage_num = storage_list.count() + 1
     context = {
         "detail_list": detail_list,
+        "storage_num": storage_num,
     }
     return render(request, 'storage/storage.html', context)
 

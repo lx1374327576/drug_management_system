@@ -130,7 +130,7 @@
         </div>
 
         <div class="topnav">
-            <a href="{% url 'demand:demand' %}">出库计划</a>
+            <a href="{% url 'demand:demand' %}">调拨</a>
             <a href="{% url 'checkout:checkout' %}">出库</a>
             <a href="{% url 'lack:lack' %}">缺货</a>
             <a href="{% url 'purchase:purchase' %}">采购</a>
@@ -148,13 +148,17 @@
                     {% csrf_token %}
                     <table>
                         <tr>
+                            <td><strong>当前采购单号</strong></td>
+                            <td> purchase-{{purchase_num}} </td>
+                        </tr>
+                        <tr>
                             <td><strong>选择供应商</strong></td>
                             <td>
                                 <select name="provider_id">
                                 {% for provider in provider_list %}
                                     <option value="{{provider.id}}">{{provider.name}}</option>
                                 {% endfor %}
-                        </select>
+                                </select>
                             </td>
                         </tr>
                         <tr>

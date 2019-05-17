@@ -69,9 +69,12 @@ def make(request):
     detail_list = []
     for detail in details:
         detail_list.append(detail)
+    purchase_list = Purchase.objects.all()
+    purchase_num = purchase_list.count() + 1
     context = {
         "detail_list": detail_list,
         "provider_list": provider_list,
+        "purchase_num": purchase_num,
     }
     return render(request, 'purchase/purchase.html', context)
 
