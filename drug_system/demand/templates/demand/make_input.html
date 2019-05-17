@@ -162,6 +162,7 @@
                         <tr>
                             <td> <strong>序号</strong> </td>
                             <td> <strong>药品编号</strong> </td>
+                            <td> <strong>药品类别</strong> </td>
                             <td> <strong>药名</strong> </td>
                             <td> <strong>数量</strong> </td>
                         </tr>
@@ -169,6 +170,7 @@
                             <tr>
                                 <td> {{forloop.counter}} </td>
                                 <td> medicine-{{medicine.id}} </td>
+                                <td> {{medicine.medicine_type.name}} </td>
                                 <td> {{medicine.name}} </td>
                                 <td><input type="text" name="{{medicine.id}}" class="input_1"/></td>
                             </tr>

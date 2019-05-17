@@ -155,27 +155,28 @@
                 <table>
                     <tr>
                         <td> <strong>单号</strong> </td>
-                        <td colspan="4"> demand-{{demand_form.id}} </td>
+                        <td colspan="5"> demand-{{demand_form.id}} </td>
                     </tr>
                     <tr>
                         <td> <strong>发起单位</strong> </td>
-                        <td colspan="4"> {{demand_form.demander.name}} </td>
+                        <td colspan="5"> {{demand_form.demander.name}} </td>
                     </tr>
                     <tr>
                         <td> <strong>发起人</strong> </td>
-                        <td colspan="4"> {{demand_form.create_user.user_name}} </td>
+                        <td colspan="5"> {{demand_form.create_user.user_name}} </td>
                     </tr>
                     <tr>
                         <td> <strong>联系方式</strong> </td>
-                        <td colspan="4"> 13757578780 </td>
+                        <td colspan="5"> 13757578780 </td>
                     </tr>
                     <tr>
                         <td> <strong>发起时间</strong> </td>
-                        <td colspan="4"> {{demand_form.create_time}} </td>
+                        <td colspan="5"> {{demand_form.create_time}} </td>
                     </tr>
                     <tr>
                         <td> <strong>序号</strong> </td>
                         <td> <strong>药品编号</strong> </td>
+                        <td> <strong>药品类别</strong> </td>
                         <td> <strong>药品名称</strong> </td>
                         <td> <strong>药品数量</strong> </td>
                         <td> <strong>价格</strong> </td>
@@ -184,6 +185,7 @@
                         <tr>
                             <td> {{forloop.counter}} </td>
                             <td> medicine-{{detail.medicine.id}} </td>
+                            <td> {{detail.medicine.medicine_type.name}} </td>
                             <td> {{detail.medicine.name}} </td>
                             <td> {{detail.num}} </td>
                             <td> {{detail.price}} </td>
@@ -191,7 +193,7 @@
                     {% endfor %}
                     <tr>
                         <td> <strong>发起人签字</strong> </td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td> <strong>收到人签字</strong> </td>
                         <td colspan="2"></td>
                     </tr>

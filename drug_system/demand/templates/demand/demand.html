@@ -150,6 +150,7 @@
                         <tr>
                             <td> <strong>序号</strong> </td>
                             <td> <strong>调拨需求方名称</strong> </td>
+                            <td> <strong>药品类别</strong> </td>
                             <td> <strong>药品名称</strong> </td>
                             <td> <strong>药品数量</strong> </td>
                             <td> <strong>是否选择</strong> </td>
@@ -158,6 +159,7 @@
                             <tr>
                                 <td> {{demand.id}} </td>
                                 <td> {{demand.demander.name}} </td>
+                                <td> {{demand.medicine.medicine_type.name}} </td>
                                 <td> {{demand.medicine.name}} </td>
                                 <td> {{demand.num}} </td>
                                 <td>

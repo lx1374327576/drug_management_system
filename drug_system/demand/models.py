@@ -3,12 +3,22 @@ from django.utils import timezone
 from user.models import User
 
 
+class Medicine_type(models.Model):
+
+    id = models.IntegerField('id', primary_key=True)
+    name = models.CharField('name', blank=False, max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class Medicine(models.Model):
 
     id = models.IntegerField('id', primary_key=True)
     name = models.CharField('name', blank=False, max_length=100)
     total_num = models.FloatField('total_num', default=0)
     now_num = models.FloatField('now_num', default=0)
+    medicine_type = models.ForeignKey(Medicine_type, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

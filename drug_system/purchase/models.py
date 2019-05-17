@@ -10,6 +10,9 @@ class Provider(models.Model):
     name = models.CharField('name', blank=False, max_length=100)
     address = models.CharField('address', blank=False, max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Purchase(models.Model):
 
