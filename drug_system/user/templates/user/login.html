@@ -109,8 +109,8 @@
         }
 
         form{
-            position: relative;
-            width:970px;
+            margin:auto;
+            /8width:970px;
             height:800px;
             color:#fff;
             text-align:center;
@@ -146,7 +146,7 @@
                     {% csrf_token %}
                     <input type="text" name="user_name" class="input_1" placeholder="用户名">
                     <br>
-                    <input type="text" name="password" class="input_1" placeholder="密码">
+                    <input type="password" name="password" class="input_1" placeholder="密码">
                     <br>
                     <br>
                     <input type="submit" value="登录" class="input_3">
