@@ -46,52 +46,23 @@
             padding: 10px;
         }
 
-        /* 左侧宽度 */
+         /* 左侧宽度 */
         .column.left {
             width: 20%;
             background-image:url("/static/2.jpeg");
-            height: 505px;
+            height: 1000px;
         }
 
         /* 右侧宽度 */
         .column.right {
             width: 20%;
             background-image:url("/static/2.jpeg");
-            height: 505px;
+            height: 1000px;
         }
 
         /* 中间区域宽度 */
         .column.middle {
             width: 60%;
-		    background-image:url("/static/login_2.jpg");
-		    height: 505px;
-        }
-
-        .input_1{
-            outline:none;
-            margin-top:10px;
-            border:0;
-            width:300px;
-            height:50px;
-            border-radius:15px;
-            padding-left:15px;
-            font-size:18px;
-            color:#999;
-        }
-        .input_2{
-            margin:20px 0px;
-            border:0;
-            background:#fff;
-        }
-        .input_3{
-            outline: none;
-            width:50px;
-            height:30px;
-            border:0;
-            padding:5px 7px;
-            background:#fff;
-            border-radius:20px;
-            margin:0px 10px;
         }
 
         /* 列后面清除浮动 */
@@ -108,19 +79,42 @@
             }
         }
 
-        form{
-            margin:auto;
-            /* width:970px; */
-            /* height:800px; */
-            color:#fff;
-            text-align:center;
-            padding:65px;
-        }
-
         /* 底部样式 */
         .footer {
             background-color: #f1f1f1;
             padding: 10px;
+            text-align: center;
+        }
+
+        /* 表格样式 */
+        table,tr,td{
+            border: 1px solid black;
+        }
+
+        table{
+            border-collapse:collapse;
+            width:100%;
+        }
+        tr{
+            height:40px
+        }
+        td{
+            text-align:center;
+            vertical-align:middle;
+        }
+        .checkbox{
+            width:30px;
+            height:30px;
+        }
+        .submit{
+            width:100px;
+            height:50px;
+            background-color:red;
+            color:white;
+            font-size:20px;
+        }
+        .submit-div{
+            width:100%;
             text-align: center;
         }
         </style>
@@ -131,31 +125,41 @@
         </div>
 
         <div class="topnav">
-            <a href="https://www.baidu.com">baidu</a>
-            <a href="https://github.com/">github</a>
-            <a href="https://leetcode.com/">leetcode</a>
-            <a href="https://www.processon.com/">processon</a>
-            <a href="https://docs.djangoproject.com/">django</a>
+            <a href="{% url 'demand:demand' %}">调拨</a>
+            <a href="{% url 'checkout:checkout' %}">出库</a>
+            <a href="{% url 'lack:lack' %}">缺货</a>
+            <a href="{% url 'purchase:purchase' %}">采购</a>
+            <a href="{% url 'storage:storage' %}">入库</a>
+            <a href="{% url 'user:index' %}">回到首页</a>
+            <a href="{% url 'user:logout' %}">注销</a>
         </div>
         <div class="row">
             <div class="column left">
-                <!--<img src="/static/1.jpg" style="max-width:100%;height:auto;"/>-->
             </div>
             <div class="column middle">
-                <form action="{% url 'user:login' %}" method="post">
-                    {% csrf_token %}
-                    <input type="text" name="user_name" class="input_1" placeholder="用户名">
-                    <br>
-                    <input type="password" name="password" class="input_1" placeholder="密码">
-                    <br>
-                    <br>
-                    <input type="submit" value="登录" class="input_3">
-                    <input type="submit" value="注册" class="input_3">
-                </form>
+                <div class="submit-div">
+                    <h2> 药品数量查询 </h2>
+                </div>
+                <table>
+                    <tr>
+                        <td> <strong>药品序号</strong> </td>
+                        <td> <strong>药品类别</strong> </td>
+                        <td> <strong>药品名称</strong> </td>
+                        <td> <strong>药品数量</strong> </td>
+                    </tr>
+                    {% for medicine in medicine_list %}
+                        <tr>
+                            {% widthratio medicine.now_num -1 1 as num_tmp %}
+                            <td> medicine-{{medicine.id}} </td>
+                            <td> {{medicine.medicine_type.name}} </td>
+                            <td> {{medicine.name}} </td>
+                            <td> {{medicine.total_num|add:num_tmp|add:150}} </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
 
             <div class="column right">
-                <!--<img src="/static/2.jpg" style="max-width:100%;height:auto;"/>-->
             </div>
         </div>
         <div class="footer">

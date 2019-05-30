@@ -11,4 +11,5 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('<int:id>/<str:query_name>/', views.query, name='query'),
     path('logout/', views.logout, name='logout'),
+    path('medicine/', views.medicine, name='medicine'),
 ]

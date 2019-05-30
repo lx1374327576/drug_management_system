@@ -3,6 +3,7 @@ from django.http import Http404
 from .models import User
 from django.shortcuts import render
 from django.shortcuts import redirect
+from demand.models import Medicine
 
 
 def test(request):
@@ -56,3 +57,10 @@ def login(request):
 def logout(request):
     return redirect("http://127.0.0.1:8000/")
 
+
+def medicine(request):
+    medicine_list = Medicine.objects.all()
+    context = {
+        'medicine_list': medicine_list,
+    }
+    return render(request, 'user/medicine.html', context)
