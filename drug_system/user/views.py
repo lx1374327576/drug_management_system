@@ -55,7 +55,7 @@ def login(request):
 
 
 def logout(request):
-    return redirect("http://127.0.0.1:8000/")
+    return redirect("http://10.128.214.119:8000/")
 
 
 def medicine(request):
